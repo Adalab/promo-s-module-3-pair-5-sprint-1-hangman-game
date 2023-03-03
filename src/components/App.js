@@ -1,5 +1,5 @@
-import style from '../styles/main.scss';
-import backStyle from '../images/blackboard.jpg';
+import '../styles/App.scss';  
+{/*sin form*/}
 
 function App() {
   return <div className="App">

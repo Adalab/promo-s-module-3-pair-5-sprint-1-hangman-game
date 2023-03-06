@@ -7,8 +7,10 @@ function App() {
   const [numberOfErrors, setNumberOfErrors] = useState(0);
   const handleClickButton = (event) => {
     event.preventDefault();
-    setNumberOfErrors(numberOfErrors+1);
-    };
+    const buttonValue = event.target.value;
+    numberOfErrors+1;
+    setNumberOfErrors(buttonValue);
+  };
 
   return <div className="App">
     <div className="page">
@@ -54,7 +56,7 @@ function App() {
             />
           </form>
         </section>
-        <section className={"dummy error-" + numberOfErrors}>
+        <section className="dummy error-5">
           <span className="error-13 eye"></span>
           <span className="error-12 eye"></span>
           <span className="error-11 line"></span>

@@ -14,7 +14,7 @@ function App() {
   const handleLastLetter = (event) => {
     event.preventDefault();
     const letterValue = event.target.value;
-    const includesLetter = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]*$/g;
+    const includesLetter = /^[a-zA-ZÁ-ÿ\u00f1\u00d1]*$/g ;
     if(letterValue.search(includesLetter)!== -1) {
         setLastLetter(letterValue);
       }

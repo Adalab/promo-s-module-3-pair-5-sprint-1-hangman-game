@@ -13,12 +13,8 @@ function App() {
   const [lastLetter, setLastLetter] = useState('');
   const handleLastLetter = (event) => {
     event.preventDefault();
-    const letterValue = event.target.value;
-    const includesLetter = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]*$/g;
-    if(letterValue.search(includesLetter)!== -1) {
-        setLastLetter(letterValue);
-      }
-    }
+    setLastLetter(event.target.value);
+  }
 
   return <div className="App">
     <div className="page">
@@ -62,7 +58,7 @@ function App() {
               name="last-letter"
               id="last-letter"
               value={lastLetter}
-              onChange={handleLastLetter}
+              onKeyUp={handleLastLetter}
             />
           </form>
         </section>

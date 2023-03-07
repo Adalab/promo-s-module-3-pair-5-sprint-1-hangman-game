@@ -5,20 +5,11 @@ import {useState} from 'react';
 function App() {
 
   const [numberOfErrors, setNumberOfErrors] = useState(0);
+  const [lastLetter, setLastLetter] = useState('');
   const handleClickButton = (event) => {
     event.preventDefault();
     setNumberOfErrors(numberOfErrors+1);
-  };
-
-  const [lastLetter, setLastLetter] = useState('');
-  const handleLastLetter = (event) => {
-    event.preventDefault();
-    const letterValue = event.target.value;
-    const includesLetter = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]*$/g;
-    if(letterValue.search(includesLetter)!== -1) {
-        setLastLetter(letterValue);
-      }
-    }
+    };
 
   return <div className="App">
     <div className="page">
@@ -61,8 +52,6 @@ function App() {
               type="text"
               name="last-letter"
               id="last-letter"
-              value={lastLetter}
-              onChange={handleLastLetter}
             />
           </form>
         </section>

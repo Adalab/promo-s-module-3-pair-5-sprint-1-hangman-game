@@ -1,9 +1,16 @@
 import '../styles/App.scss';
 import {useState} from 'react';
-{/*sin form*/}
+
 
 function App() {
-
+  const [word, setWord]= useState ('Katakroker');
+   
+  const renderSolutionLetters = () => {
+  const wordLetters = word.split('').map ((word) =>{
+    return <li className="letter">{wordLetters}</li>;
+  });
+  }
+  const [userLetters, setUserLetters] = useState ('');
   const [numberOfErrors, setNumberOfErrors] = useState(0);
   const handleClickButton = (event) => {
     event.preventDefault();
@@ -11,14 +18,16 @@ function App() {
   };
 
   const [lastLetter, setLastLetter] = useState('');
+
+
   const handleLastLetter = (event) => {
-    event.preventDefault();
-    const letterValue = event.target.value;
-    const includesLetter = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]*$/g;
-    if(letterValue.search(includesLetter)!== -1) {
-        setLastLetter(letterValue);
-      }
-    }
+  const letterValue = event.target.value;
+  const regExp = /^[A-Za-zñÑáéíóúüçÁÉÍÓÚ\s\u00f1\u00d1]*$/
+  const test = regExp.test(letterValue);
+   if (test) {
+  setLastLetter(letterValue);
+    };  
+  }
 
   return <div className="App">
     <div className="page">
@@ -29,19 +38,8 @@ function App() {
         <section>
           <div className="solution">
             <h2 className="title">Solución:</h2>
-            <ul className="letters">
-              <li className="letter">k</li>
-              <li className="letter">a</li>
-              <li className="letter"></li>
-              <li className="letter">a</li>
-              <li className="letter">k</li>
-              <li className="letter">r</li>
-              <li className="letter"></li>
-              <li className="letter">k</li>
-              <li className="letter">e</li>
-              <li className="letter">r</li>
-            </ul>
-          </div>
+            <ul className="letters">{renderSolutionLetters()}</ul>  
+         </div>
           <div className="error">
             <h2 className="title">Letras falladas:</h2>
             <ul className="letters">

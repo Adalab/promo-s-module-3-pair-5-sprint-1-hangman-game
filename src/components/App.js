@@ -6,8 +6,9 @@ function App() {
   const [word, setWord]= useState ('Katakroker');
    
   const renderSolutionLetters = () => {
-  const wordLetters = word.split('').map ((word) =>{
-    return <li className="letter">{wordLetters}</li>;
+  const wordLetters = word.split('')
+  return wordLetters.map ((word) =>{
+    return <li className="letter"></li>;
   });
   }
   const [userLetters, setUserLetters] = useState ('');

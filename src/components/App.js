@@ -1,25 +1,31 @@
 import '../styles/App.scss';
 import {useState} from 'react';
 
-
+ 
 function App() {
   const [word, setWord]= useState ('Katakroker');
+  const [userLetters, setUserLetters] = useState ([]);
+  const [numberOfErrors, setNumberOfErrors] = useState(0);
+  const [lastLetter, setLastLetter] = useState('');
    
   const renderSolutionLetters = () => {
-  const wordLetters = word.split('')
-  return wordLetters.map ((word) =>{
-    return <li className="letter"></li>;
+  const wordLetters = word.split('') //convertirlo en array
+  return wordLetters.map ((word , index) =>{
+    return <li key ={index} className="letter"></li>;
   });
   }
-  const [userLetters, setUserLetters] = useState ('');
-  const [numberOfErrors, setNumberOfErrors] = useState(0);
+
+  /*const renderErrorLetters = (event) => {
+    setUserLetters = event.target.value;
+    /*return word.filter ((eachLetter) => eachLetter !== userLetters {
+       return <li className="letter"></li>;
+    });*/
+
+ 
   const handleClickButton = (event) => {
     event.preventDefault();
     setNumberOfErrors(numberOfErrors+1);
   };
-
-  const [lastLetter, setLastLetter] = useState('');
-
 
   const handleLastLetter = (event) => {
   const letterValue = event.target.value;
@@ -27,6 +33,7 @@ function App() {
   const test = regExp.test(letterValue);
    if (test) {
   setLastLetter(letterValue);
+  setUserLetters ([...userLetters, letterValue]); //lo clonamos porque queremos quedarnos con el array anterior + lo nuevo
     };  
   }
 
@@ -43,13 +50,7 @@ function App() {
          </div>
           <div className="error">
             <h2 className="title">Letras falladas:</h2>
-            <ul className="letters">
-              <li className="letter">f</li>
-              <li className="letter">q</li>
-              <li className="letter">h</li>
-              <li className="letter">p</li>
-              <li className="letter">x</li>
-            </ul>
+            <ul className="letters"></ul>
           </div>
           <form className="form">
             <label className="title" htmlFor="last-letter">Escribe una letra:</label>
@@ -82,7 +83,8 @@ function App() {
         </section>
         <button onClick={handleClickButton} value=''>Incrementar</button>
       </main>
-    </div></div>;
-}
+    </div>
+  </div>
+};
 
 export default App;
